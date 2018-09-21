@@ -15,12 +15,10 @@ var prompt = require('prompt-sync')();
 let inform, conta, resp, num1, num2, operac, res;
 do {
    
-    for (let i=0;i<3;i++){
-
-            if (i == 0) num1 = prompt('Favor informar um numero: ');
-            else if (i == 1) operac = prompt('Favor informar uma operação (soma, subtracao, multiplicacao, divisao): ');
-            else num2 = prompt('Favor informar outro numero: ');
-    }
+    num1 = prompt('Favor informar um numero: ');
+    operac = prompt('Favor informar uma operação (soma, subtracao, multiplicacao, divisao): ');
+    num2 = prompt('Favor informar outro numero: ');
+    
     switch (operac){
 
         case "soma":
