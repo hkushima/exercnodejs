@@ -14,3 +14,27 @@
     - Exibir quantas vezes essa palavra se repete na lista de palavras
 
  */
+
+var prompt = require('prompt-sync')();
+
+let palavra;
+let arrPalavras = [];
+
+do{
+
+    palavra = prompt('Digite uma palavra (para sair, digite "sair"): ');
+    
+    if (palavra != "sair") arrPalavras.push(palavra);
+
+} while (palavra != "sair")
+
+let selecPalavra = prompt('Digite uma palavra a ser buscada: ');
+let cont = 0;
+
+for (let i=0;i<arrPalavras.length;i++){
+
+    if (selecPalavra == arrPalavras[i]) cont++;
+
+}
+
+console.log('A palavra '+selecPalavra+' foi encontrada '+cont+' vezes.')

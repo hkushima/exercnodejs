@@ -43,4 +43,87 @@ Ex6: Crie um programa que simulará uma agenda de contatos, onde um objeto JSON 
                 - Se existir, imprimir as informações deste usuário (pode ser o json do contato).
         - Repetir a "segunda parte"
  
- */
+
+*/
+
+ var agenda = {};
+ var prompt = require('prompt-sync')();
+ let nome, telefone, primLetra
+ 
+ do{
+
+    // pega o nome
+    nome = prompt('Digite o nome do contato: ');
+
+    // pega a primeira letra
+    primLetra = nome.charAt(0).toUpperCase();
+
+    // pega o telefone
+    telefone = prompt('Digite o telefone: ');
+
+    //  
+    let temp = {}; 
+    temp.nome = nome;
+    temp.tel = telefone;
+    //console.log(temp);
+
+    //inicio da tratatiiva
+    // Primeiro verifica se existe a letra no primeiro objeto
+
+    let existe = false;
+
+    for (let letra1 in agenda){
+        if (primLetra == letra1){
+            existe = true;
+            break;
+        } 
+    }
+
+    if (!existe){
+        
+        agenda[primLetra] = [];
+        agenda[primLetra].push(temp)
+    
+    } else agenda[primLetra].push(temp)
+
+        cadastro = prompt('Deseja continuar cadastrando? (s/n) ')
+
+ } while(cadastro != "n")
+
+ //console.log(agenda)
+
+ let resp
+ do{
+
+    resp = prompt('Digite um nome de contato cadastrado para pesquisar na agenda ou digite "sair" para finalizar: ')
+    if (resp != "sair"){
+
+        let primLetra2 = resp.charAt(0).toUpperCase();
+        for (let x in agenda){
+            
+            if (x == primLetra2){
+                
+                let tam = agenda[primLetra2].length;
+                
+               // console.log(agenda[primLetra2][0]);
+                
+                for(let z=0;z<tam; z++){
+
+                    //console.log(agenda[primLetra2][z])
+                    
+                    if (agenda[primLetra2][z].nome.toUpperCase() == resp.toUpperCase()){
+                        
+                        //console.log('Achei o contato');
+                        console.log("Nome: "+agenda[primLetra2][z].nome)
+                        console.log("Telefone: "+agenda[primLetra2][z].tel)
+                        break;
+                    }
+                    
+                }
+                
+                break;
+            }   
+        }
+    }
+
+ } while (resp != "sair")
