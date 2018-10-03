@@ -25,3 +25,20 @@
         lalala1
         lalala2
 */
+var prompt = require('prompt-sync')();
+let obj = prompt('Digite um JSON:  ');
+//let obj = '{"teste":{"a":{"texto1":"bla1","texto2":"bla2"},"b":{"texto1":"bla3","texto2":"bla4"}},"in1":{"in2":{"in3":{"texto":"lalala1","in4":{"in5":{"texto":"lalala2"}}}}}}'
+var x = JSON.parse(obj)
+
+laco(x)
+
+// função para procurar a string de um objeto
+function laco(arr){
+
+    for (let chave in arr)
+        {
+            if (typeof arr[chave] == 'object') laco(arr[chave])
+            else if (typeof arr[chave] == 'string') console.log(arr[chave]);
+            
+        }
+}
